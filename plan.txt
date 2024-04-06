@@ -1,0 +1,33 @@
+plannzzz 
+
+-- how does the game work?
+- display dashes in replace of letters
+- display number of lives left
+- user types in a letter
+    - if letter in word, display letter instead of a dash
+    - if letter not in word, reduce number of lives
+- game restarts
+
+-- maybe?
+- insert a clue for each word.
+- insert a new clue after every failure to guess?
+
+---------------------------------------------------------------------
+
+example --
+
+--DISPLAY 1 :
+'Welcome to Hangman! A word will be chosen at random and
+you must try to guess the word correctly letter by letter
+before you run out of attempts. Good luck!'
+
+ready to play? Y or N
+
+
+-- DISPLAY 2 :
+Guess the following word! Please select a letter between A-Z
+
+_ _ _ _ _ _
+
+number of lives : 10
+letters guessed but not in word : a, x, y
