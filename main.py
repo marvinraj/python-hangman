@@ -5,8 +5,8 @@ def main():
     instructions()
 
     secret_word = get_word()
-    chances = 10
-    guessed_letters = []
+    chances = 3
+    guessed_letters = [] # not in secret word
     blank_word = []
     letters_to_guess = []
 
@@ -18,27 +18,40 @@ def main():
         for letter in secret_word:
             blank_word.append('_')
             letters_to_guess.append(letter)
-        
-        # print out the blank version of the secret word
-        for i in blank_word:
-            print(i, end=" ")
-        
-        # print an empty line so that the code looks better
-        print("\n")
 
         # core game logic
         while chances != 0:
-            guess = input("Guess a letter ==> ")
+            # print out the blank version of the secret word
+            for i in blank_word:
+                print(i, end=" ")
+            
+            # print guessed letters & chances left
+            print(f"\n\nletters guessed but not in secret word: {guessed_letters}\nchances left : {chances}")
+
+            guess = input("\n\nGuess a letter ==> ")
+
+            print("=====================================================")
+
             if guess in letters_to_guess:
-                print(f"{guess} is in the letters_to_guess")
+                print(f"\nNICEEEEE !! {guess} is in the word !!!!!!\n")
+                letter_index = letters_to_guess.index(guess)
+                blank_word[letter_index] = guess
+                continue
             else:
-                print("letter not found in word.")
+                chances -= 1
+                guessed_letters.append(guess)
+                print("\nNOOOOBBBB letter not found in word.")
+
+        print(f"\nYou ran out of chances. The secret word is {secret_word}")
 
         play = False
 
+def show_blank():
+    pass
+
 # a function to store a list of random words and returns a random word from the list
 def get_word():
-    random_words = ["apple", "orange", "lime"]
+    random_words = ["pen", "orange", "lime"]
     chosen_word = random.choice(random_words)
     return chosen_word
 

@@ -31,3 +31,25 @@ _ _ _ _ _ _
 
 number of lives : 10
 letters guessed but not in word : a, x, y
+
+
+-- DISPLAY 3 :
+Guess the following word! Please select a letter between A-Z
+
+_ b _ _ _ _
+
+number of lives : 10
+letters guessed but not in word : a, x, y
+
+---------------------------------------------------------------------
+
+todo day 3
+- finish up with the logic
+    - if letter in word, what to do?
+    - if letter not in, what to do?
+
+
+
+upcoming todos
+- refactoring
+- code modularization
