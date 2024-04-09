@@ -1,14 +1,13 @@
 import random
 
 def main():
-
     instructions()
     start_game()
-    
 
+# start game
 def start_game():
     print("Are you ready to play?")
-    user_play = input("==> ")
+    user_play = input("==> ").lower()
 
     if user_play == "y":
         core_game()
@@ -19,13 +18,14 @@ def start_game():
 # core game logic
 def core_game():
     secret_word = get_word()
-    chances = 3
+    chances = 6
     guessed_letters = [] # not in secret word
     blank_word = []
     letters_to_guess = []
 
     play = True
     while play:
+        print("\n=======================================================================")
         print('\nGuess the following word! Please select a letter between A-Z.\n')
 
         # create blank version of the secret word
@@ -33,10 +33,13 @@ def core_game():
 
         # core game logic
         while chances != 0:
+            # draws hangman according to chances remaining
+            draw_hangman(chances)
+
             # print out the blank version of the secret word
             print_blank_word(blank_word)
 
-            # check guessed word
+            # check if entire word is guessed correctly
             if ''.join(blank_word) == secret_word:
                 print(f'\n\nYOU GUESSED IT RIGHT!! The secret word is {secret_word}.')
                 break
@@ -46,7 +49,8 @@ def core_game():
 
             # user guesses a letter
             guess = input("\n\nGuess a letter ==> ")
-
+            
+            # prints a divider between guesses
             print("\n=======================================================================")
 
             # checks if guessed letter is in the secret word
@@ -67,6 +71,71 @@ def core_game():
     
     print(f"\nYou ran out of chances. The secret word is {secret_word}")
 
+# a function to draw hangman
+def draw_hangman(chances):
+    if (chances == 6):
+            print("_________")
+            print("|	 |")
+            print("|")
+            print("|")
+            print("|")
+            print("|")
+            print("|________")
+            print("\n")
+    elif (chances == 5):
+            print("_________")
+            print("|	 |")
+            print("|	 O")
+            print("|")
+            print("|")
+            print("|")
+            print("|________")
+            print("\n")
+    elif (chances == 4):
+            print("_________")
+            print("|	 |")
+            print("|	 O")
+            print("|	 |")
+            print("|	 |")
+            print("|")
+            print("|________")
+            print("\n")
+    elif (chances == 3):
+            print("_________")
+            print("|	 |")
+            print("|	 O")
+            print("|	\|")
+            print("|	 |")
+            print("|")
+            print("|________")
+            print("\n")
+    elif (chances == 2):
+            print("_________")
+            print("|	 |")
+            print("|	 O")
+            print("|	\|/")
+            print("|	 |")
+            print("|")
+            print("|________")
+            print("\n")
+    elif (chances == 1):
+            print("_________")
+            print("|	 |")
+            print("|	 O")
+            print("|	\|/")
+            print("|	 |")
+            print("|	/ ")
+            print("|________")
+            print("\n")
+    elif (chances == 0):
+            print("_________")
+            print("|	 |")
+            print("|	 O")
+            print("|	\|/")
+            print("|	 |")
+            print("|	/ \ ")
+            print("|________")
+            print("\n")
 
 # a function to create blank version of the secret word        
 def create_blank_word(blank_word, secret_word, letters_to_guess):
