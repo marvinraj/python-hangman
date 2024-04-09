@@ -55,6 +55,9 @@ def core_game():
                 letter_index = letters_to_guess.index(guess)
                 blank_word[letter_index] = guess
                 continue
+            elif guess in guessed_letters:
+                print("\nYou already guessed that letter!\n")
+                continue
             else: # letter not in word
                 chances -= 1
                 guessed_letters.append(guess)
